@@ -1,0 +1,22 @@
+{
+  "name": "feirinha",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Walter Gandarella <walter.wgbn@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.1",
+    "uikit": "~2.25.0"
+  }
+}

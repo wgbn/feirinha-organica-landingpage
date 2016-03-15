@@ -1,0 +1,420 @@
+@import "css3-mixins.scss";
+@import "flex.scss";
+@import "reset.scss";
+
+/* font */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,100);
+
+%flex-top-center {
+    @include flexbox;
+    @include justify-content(center);
+}
+%flex-bottom-center {
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(flex-end);
+}
+%flex-center-left {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(flex-start);
+}
+%flex-center-right {
+    @include flexbox;
+    @include align-items(center);
+    @include justify-content(flex-end);
+}
+%flex-center-center {
+    @include flexbox;
+    @include justify-content(center);
+    @include align-items(center);
+}
+%flex-esticado {
+    @include align-content(stretch);
+}
+%cover {
+    background-size: cover;
+    background-position: center center;
+}
+
+$primaryDark: #1B5E20;
+$primaryLight: #AED581;
+$secondaryLight: #FFB74D;
+$secondaryDark: rgba(255, 152, 0, 1);
+
+.site {
+    font-family: 'Raleway', 'Helvetica', sans-serif;
+
+    & .barra-topo {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        background-color: $primaryDark;
+        height: 55px;
+        padding-left: 128px;
+
+        @extend %flex-center-left;
+
+        & .logo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 128px;
+            padding: .3em;
+            & img {
+                width: 100%;
+            }
+        }
+
+        & ul {
+            & li {
+                display: inline-block;
+                & a {
+                    text: {
+                        decoration: none;
+                        transform: uppercase;
+                    }
+                    color: $primaryLight;
+                    margin: 0 .4em;
+                    padding: .4em;
+                    font: {
+                        size: .9em;
+                    }
+
+                    &:hover {
+                        color: $secondaryLight;
+                    }
+                }
+            }
+        }
+    }
+
+    & .capa {
+        height: 85vh;
+        background-color: $secondaryLight;
+        padding-top: 55px;
+        & .slides {
+            & ul {
+                & li {
+                    @extend %cover;
+                    @extend %flex-center-right;
+                    //@include flex-direction(column);
+                    height: 100%;
+
+                    & .feira {
+                        width: 100%;
+                        @include flex-grow(1);
+                        @extend %flex-center-center;
+                        & img {
+                            max-width: 450px;
+                        }
+                    }
+                    & .msg {
+                        line-height: normal;
+                        color: #fff;
+                        text-align: right;
+
+                        & h2, & p {
+                            padding: .3em .5em .3em .3em;
+                            text-align: right;
+                            display: inline-block;
+                            //background-color: #fff;
+                            @include box-shadow(-2px, 2px, 3px, rgba(0,0,0,.3));
+                        }
+                        & h2 {
+                            background-color: $primaryDark;
+                            color: #fff;
+                            font: {
+                                size: 3em;
+                                weight: bold;
+                            }
+                        }
+                        & p {
+                            background-color: $secondaryDark;
+                            //color: $secondaryDark;
+                            margin: .4em 0 0;
+                            font-size: 1.5em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    & .vantagens-h3 {
+        text-align: center;
+        color: $primaryDark;
+        margin: 1em 0;
+        font: {
+            size: 2.5em;
+            weight: lighter;
+        }
+    }
+
+    & .vantagens {
+        @extend %flex-center-center;
+        padding: 1em 0;
+        margin-bottom: 3em;
+
+        & .bloco {
+            width: 33%;
+            max-width: 200px;
+            margin: 0 3%;
+            padding: .5em;
+            //border: 1px solid $primaryLight;
+            text-align: center;
+            //
+
+            & img {
+                width: 80%;
+            }
+
+            & strong {
+                display: block;
+                color: #fff;
+                margin: .4em 0;
+                padding: .4em 0;
+                background-color: $secondaryDark;
+                @include border-radius(20px);
+
+                text: {
+                    transform: uppercase;
+                    align: center;
+                }
+                font: {
+                    size: 1em;
+                }
+            }
+
+            & span {
+                font-size: .7em;
+                display: block;
+            }
+        }
+    }
+
+    & .cartoes {
+        padding: 1em;
+        border-bottom: 1px solid #ccc;
+        text-align: center;
+        padding-bottom: 3em;
+
+        & h2 {
+            font-size: 1.5em;
+            margin-bottom: 1.5em;
+        }
+        & img {
+            max-width: 52px;
+            margin: 0 .3em;
+        }
+    }
+
+    & .planos {
+        //height: 70vh;
+        padding: 3em;
+
+        & h2 {
+            font: {
+                size: 4em;
+                weight: lighter;
+            }
+            text-align: center;
+            color: $secondaryDark;
+            margin-bottom: 1em;
+        }
+
+        & .blocos {
+            @extend %flex-center-center;
+            @include flex-wrap(wrap);
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+
+            & .bloco {
+                width: 23%;
+                max-width: 200px;
+                margin: 1em 1%;
+                text-align: center;
+                cursor: pointer;
+                @include box-shadow(0,0,4px, rgba(0,0,0,.5));
+
+                & .tempo {
+                    background-color: $secondaryLight;
+                    color: $primaryDark;
+                    font-size: 1.3em;
+                    padding: .5em 0;
+                }
+                & .capinha {
+                    height: 85px;
+                    @extend %cover;
+                }
+                & div {
+                    & strong, & span {
+                        display: block;
+                    }
+                    & strong {
+                        font-size: 1.5em;
+                        padding: .4em .2em;
+                    }
+                    & span {
+                        font-size: .8em;
+                        padding-bottom: .3em;
+                    }
+                }
+                & .valor {
+                    color: $primaryDark;
+                }
+                & .descr {
+                    color: $secondaryDark;
+                    //background-color: $secondaryLight;
+                    border-top: 1px solid #ccc;
+                    border-bottom: 1px solid #ccc;
+                    & span {
+                        color: #666;
+                    }
+                }
+                & .descr2 {
+                    padding: .4em 0;
+                }
+                & .total {
+                    background-color: $primaryDark;
+                    color: #fff;
+                }
+            }
+        }
+    }
+
+    & .como {
+        @extend %cover;
+        @extend %flex-center-center;
+        background-image: url(../images/back-01.jpg);
+        /*background-size: 150%;
+        background-repeat: no-repeat;*/
+        height: 70vh;
+
+        & .vazio {
+            width: 40%;
+        }
+
+        & .funciona {
+            height: 100%;
+            width: 60%;
+
+            & h2 {
+                font: {
+                    size: 4em;
+                    weight: lighter;
+                }
+                text-align: center;
+                color: #fff;
+                padding: .5em 0 .7em;
+            }
+
+            & .blocos {
+                @extend %flex-center-center;
+
+                & .bloco {
+                    width: 33%;
+                    max-width: 200px;
+                    margin: 0 1.5%;
+                    text-align: center;
+                    & img {
+                        max-height: 150px;
+                    }
+                    & p {
+                        //font-size: .9em;
+                        color: #333;
+                        background-color: rgba(255,255,255,.60);
+                        padding: .5em;
+                        margin-top: 1em;
+                        line-height: normal;
+                        text-align: center;
+                        @include border-radius(3px);
+                        @include box-shadow(0, 2px, 3px, rgba(0,0,0,.2));
+                    }
+                }
+            }
+        }
+    }
+
+    & .logistica {
+        height: 70vh;
+        padding: 3em;
+
+        & h2 {
+            font: {
+                size: 4em;
+                weight: lighter;
+            }
+            text-align: center;
+            color: $secondaryDark;
+            margin-bottom: 1em;
+        }
+
+        & .blocos {
+            @extend %flex-center-center;
+            @include flex-wrap(wrap);
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+
+            & .bloco {
+                width: 48%;
+                margin: 1em 1%;
+                line-height: normal;
+                @extend %flex-top-center;
+                & .imagem {
+                    width: 20%;
+                    text-align: right;
+                    & img {
+                        //width: 100%;
+                        max-height: 60px;
+                    }
+                }
+                & .dados {
+                    width: 80%;
+                    padding-left: 1em;
+                    & strong {
+                        text-transform: uppercase;
+                        color: $secondaryDark;
+                        font-weight: normal;
+                    }
+                    & p {
+                        color: $primaryDark;
+                    }
+                }
+            }
+        }
+    }
+
+    & .rodape {
+        border-top: 1px solid #ccc;
+        padding: 1em 0 .3em;
+
+        & .linha {
+            @extend %flex-center-center;
+            color: #333;
+            padding: .5em 0;
+            & span {
+                margin-right: .3em;
+            }
+            & strong {
+                font-weight: normal;
+                margin-right: 1.5em;
+            }
+            & strong:last-child {
+                margin-right: 0;
+            }
+
+            & a {
+                color: $primaryDark;
+                text-decoration: none;
+                font-size: 2em;
+                margin: 0 .5em;
+            }
+        }
+    }
+}
